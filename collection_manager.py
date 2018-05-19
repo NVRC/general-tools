@@ -23,4 +23,7 @@ for file in os.listdir(filePathJPG):
         filenames.append(os.path.splitext(file)[0])
 
 for name in filenames:
-    shutil.copy2(os.path.join(filePathRaw,name+suffix),filePathRawDEST)
+    frozenSet = os.listdir(filePathRaw)
+    nameSuffix = name + suffix
+    if nameSuffix in frozenSet:
+        shutil.copy2(os.path.join(filePathRaw,nameSuffix),filePathRawDEST)
