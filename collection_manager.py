@@ -22,8 +22,12 @@ for file in os.listdir(filePathJPG):
     if file.endswith(".JPG"):
         filenames.append(os.path.splitext(file)[0])
 
+print(filenames)
+print(len(filenames))
+frozenSet = os.listdir(filePathRaw)
 for name in filenames:
-    frozenSet = os.listdir(filePathRaw)
     nameSuffix = name + suffix
     if nameSuffix in frozenSet:
-        shutil.copy2(os.path.join(filePathRaw,nameSuffix),filePathRawDEST)
+        targetSet = os.listdir(filePathRawDEST)
+        if nameSuffix not in targetSet:
+            shutil.copy2(os.path.join(filePathRaw,nameSuffix),filePathRawDEST)
